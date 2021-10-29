@@ -131,17 +131,11 @@
                                     {{ Auth::user()->name }}</h6>
                                     @endif
                                     <p class="mb-0 text-sm text-gray-600">
-                                       @if(Auth::user() && Auth::user()->usertype_id == 1)
-                                       {{ __('Hello Admin!') }}
-                                       @endif
+                                        <small class="text-info">{{Auth::user()->usertype}}</small>
                                    </p>                         </div>
                                    <div class="user-img d-flex align-items-center">
                                     <div class="avatar avatar-md">
-                                        @if(Auth::user()->photo)
-                                        <img src="{{ url('/profile/') }}/{{Auth::user()->photo}}" >
-                                        @else
                                         <img src="{{ url('/') }}/admin/images/faces/1.jpg">
-                                        @endif
                                     </div>
                                 </div>
                             </div>
