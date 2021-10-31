@@ -30,6 +30,10 @@ Route::get('/autologin', [App\Http\Controllers\Auth\LoginController::class, 'log
 Route::group(['middleware' => 'student'], function () {
      Route::group(['prefix'=>'student'], function(){
          Route::get('/alltest', [StudentController::class, 'index'])->name('alltest');
+        
+      
+         Route::get('exams/{id}/give/', [StudentController::class, 'give']);
+        
       
      });
  });
@@ -37,17 +41,18 @@ Route::group(['middleware' => 'student'], function () {
     Route::group(['prefix'=>'teacher'], function(){
         Route::get('/alltest', [TeacherController::class, 'index'])->name('alltest');
         Route::get('/addtest', [TeacherController::class, 'addtest'])->name('addtest');
-        Route::get('/savetest', [TeacherController::class, 'savetest'])->name('savetest');
+        Route::post('/savetest', [TeacherController::class, 'savetest'])->name('savetest');
         Route::get('/edittest', [TeacherController::class, 'edittest'])->name('edittest');
         Route::get('/updatetest', [TeacherController::class, 'updatetest'])->name('updatetest');
         Route::get('/deletetest', [TeacherController::class, 'deletetest'])->name('deletetest');
         // -------------------------------------------------------------------------------------------------------
         Route::get('/allquestion', [TeacherController::class, 'index'])->name('allquestion');
-        Route::get('/addquestion', [TeacherController::class, 'addquestion'])->name('addquestion');
-        Route::get('/savequestion', [TeacherController::class, 'savequestion'])->name('savequestion');
-        Route::get('/editquestion', [TeacherController::class, 'editquestion'])->name('editquestion');
-        Route::get('/updatequestion', [TeacherController::class, 'updatequestion'])->name('updatequestion');
-        Route::get('/deletequestion', [TeacherController::class, 'deletequestion'])->name('deletequestion');
+        Route::get('/addquestion/{id}', [TeacherController::class, 'addquestion'])->name('addquestion');
+        Route::post('/savequestion/{id}', [TeacherController::class, 'savequestion'])->name('savequestion');
+        Route::get('/getquestionswithtestdetails/{id}', [TeacherController::class, 'getquestionswithtestdetails'])->name('getquestionswithtestdetails');
+        Route::get('/editquestion/{id}', [TeacherController::class, 'editquestion'])->name('editquestion');
+        Route::post('/updatequestion/{id}', [TeacherController::class, 'updatequestion'])->name('updatequestion');
+        Route::get('/deletequestion/{id}', [TeacherController::class, 'deletequestion'])->name('deletequestion');
      
     });
 });
