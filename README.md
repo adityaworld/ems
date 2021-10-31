@@ -1,4 +1,4 @@
-# ![Laravel Example App](public\admin\images\logo\logo.png)
+# ![Laravel Example App](./public/admin/images/logo/logo.png)
 
 
 
